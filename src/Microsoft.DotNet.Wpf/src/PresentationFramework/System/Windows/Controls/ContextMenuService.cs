@@ -529,10 +529,13 @@ namespace System.Windows.Controls
             get { return _top; }
         }
 
-        internal DependencyObject TargetElement
+        /// <summary>
+        /// Gets the target element on which the context menu was really opened on
+        /// </summary>
+        public DependencyObject TargetElement
         {
             get { return _targetElement; }
-            set { _targetElement = value; }
+            internal set { _targetElement = value; }
         }
 
         /// <summary>
