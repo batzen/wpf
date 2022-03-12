@@ -163,6 +163,8 @@ namespace MS.Utility
         /// </summary>
         public abstract object Clone();
 
+        public abstract void TrimExcess();
+
         // The number of items in the list.
         protected int _count;
 
@@ -375,6 +377,10 @@ namespace MS.Utility
             {
                 throw new ArgumentOutOfRangeException(nameof(value));
             }
+        }
+
+        public override void TrimExcess()
+        {
         }
 
         private const int SIZE = 1;
@@ -701,6 +707,10 @@ namespace MS.Utility
             {
                 throw new ArgumentOutOfRangeException(nameof(value));
             }
+        }
+
+        public override void TrimExcess()
+        {
         }
 
         private const int SIZE = 3;
@@ -1266,6 +1276,10 @@ namespace MS.Utility
             }
         }
 
+        public override void TrimExcess()
+        {
+        }
+
         private const int SIZE = 6;
 
         private T _entry0;
@@ -1518,6 +1532,14 @@ namespace MS.Utility
             {
                 throw new ArgumentOutOfRangeException(nameof(value));
             }
+        }
+
+        public override void TrimExcess()
+        {
+            int newCapacity = Math.Max(_count + (_count >> 2), MINSIZE);
+            var sourceArray = _entries;
+            var targetArray = new T[newCapacity];
+            Array.Copy(sourceArray, 0, targetArray, 0, _count);
         }
 
         // MINSIZE and GROWTH chosen to minimize memory footprint
@@ -1909,6 +1931,11 @@ namespace MS.Utility
             }
 
             return myClone;
+        }
+
+        public void TrimExcess()
+        {
+            _listStore.TrimExcess();
         }
 
         internal FrugalListBase<T> _listStore;

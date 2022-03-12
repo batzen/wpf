@@ -832,6 +832,12 @@ namespace System.Windows
                     }
                 }
 
+                if (foundDirt
+                    && _list.Count * 4 < _list.Capacity)
+                {
+                    _list.TrimExcess();
+                }
+
                 return foundDirt;
             }
 
