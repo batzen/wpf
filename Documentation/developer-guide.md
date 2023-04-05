@@ -73,7 +73,7 @@ and not automated testing. For automated testing, see the [Running DRTs locally]
 
 #### Copying binaries to publish location of a self-contained application
 The simplest approach is to publish your sample app using `dotnet publish -r <rid> --self-contained`.
-You can add the `<SelfContained>true</SelfContained>` and `<RuntimeIdentifer>rid</RuntimeIdentifier>`
+You can add the `<SelfContained>true</SelfContained>` and `<RuntimeIdentifier>rid</RuntimeIdentifier>`
 properties to your .csproj or .vbproj file and then you can simply execute `dotnet publish`.
 We recommend always supplying a runtime identifier, as many of the WPF assemblies are architecture dependent.
 The values you can choose here are `win-x86` or `win-x64`.
